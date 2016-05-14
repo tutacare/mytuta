@@ -12,7 +12,7 @@
     ],
     "autoload": {
       "psr-4": {
-        "Tuta\\Upload\\": "src/"
+        "Tuta\\Mytuta\\": "src/"
       }
     },
     "extra": {
