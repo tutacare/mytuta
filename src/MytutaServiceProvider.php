@@ -6,7 +6,6 @@ use Illuminate\Support\ServiceProvider;
 
 class MytutaServiceProvider extends ServiceProvider
 {
-    protected $defer = false;
     /**
      * Bootstrap the application services.
      *
@@ -24,9 +23,8 @@ class MytutaServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        $this->app->bind('mytuta', function($app) {
-            return new Mytuta($app);
-        });
+      $this->app->bind('mytuta', function($app) {
+          return new Mytuta($app);
+      });
     }
-
 }
