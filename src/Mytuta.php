@@ -3,13 +3,12 @@
 namespace Tuta\Mytuta;
 
 use Intervention\Image\Facades\Image;
-use Illuminate\Support\Facades\Request;
 use Storage, File;
 
 class Mytuta {
   public function uploadImage($image, $path, $width, $height)
   {
-    $name_of_image = uniqid('TUTAIMG', true) . str_random(5) . '.' . Request::file($image)->getClientOriginalExtension();
+    $name_of_image = uniqid('TUTAIMG', true) . str_random(5) . '.' . $image->getClientOriginalExtension();
     Storage::put($path.'/'.$name_of_image,  File::get($image));
     $img = Image::make(storage_path('app/'.$path.'/' . $name_of_image));
     $img->resize($width, $height, function ($constraint) {
@@ -21,7 +20,7 @@ class Mytuta {
 
   public function uploadImageEdit($image, $path, $image_edit, $width, $height)
   {
-    $name_of_image = uniqid('TUTAIMG', true) . str_random(5) . '.' . Request::file($image)->getClientOriginalExtension();
+    $name_of_image = uniqid('TUTAIMG', true) . str_random(5) . '.' . $image->getClientOriginalExtension();
     Storage::delete($path.'/'.$image_edit);
     Storage::put($path.'/'.$name_of_image,  File::get($image));
     $img = Image::make(storage_path('app/'.$path.'/' . $name_of_image));
