@@ -40,7 +40,17 @@ $upload['mime'] //mengambil mime type dari file yang di upload
 
 #Upload Image
 <pre>
-$upload = Mytuta::uploadImage($image, $path, $width, $height);
+$upload = Mytuta::uploadImage($request->file($image), $path, $width, $height);
+
+return:
+$upload = Image Name
+</pre>
+
+#Upload Image For Edit
+<pre>
+$upload = Mytuta::uploadImageEdit($request->file($image), $path, $image_edit, $width, $height);
+
+//$image_edit is name of image to delete
 
 return:
 $upload = Image Name
