@@ -8,7 +8,7 @@ use Storage, File;
 class Mytuta {
   public function uploadImage($image, $path, $width, $height)
   {
-    $name_of_image = uniqid('TUTAIMG', true) . str_random(5) . '.' . $image->getClientOriginalExtension();
+    $name_of_image = uniqid('TUTAIMG') . str_random(5) . '.' . $image->getClientOriginalExtension();
     Storage::put($path.'/'.$name_of_image,  File::get($image));
     $img = Image::make(storage_path('app/'.$path.'/' . $name_of_image));
     $img->resize($width, $height, function ($constraint) {
@@ -20,8 +20,11 @@ class Mytuta {
 
   public function uploadImageEdit($image, $path, $image_edit, $width, $height)
   {
-    $name_of_image = uniqid('TUTAIMG', true) . str_random(5) . '.' . $image->getClientOriginalExtension();
+    $name_of_image = uniqid('TUTAIMG') . str_random(5) . '.' . $image->getClientOriginalExtension();
+    if($image_edit <> 'no-foto.png')
+    {
     Storage::delete($path.'/'.$image_edit);
+    }
     Storage::put($path.'/'.$name_of_image,  File::get($image));
     $img = Image::make(storage_path('app/'.$path.'/' . $name_of_image));
     $img->resize($width, $height, function ($constraint) {
@@ -33,7 +36,7 @@ class Mytuta {
 
   public function uploadFile($file, $path)
   {
-    $file_name = uniqid('TUTAFILE', true) . str_random(5) . '.' . $file->getClientOriginalExtension();
+    $file_name = uniqid('TUTAFILE') . str_random(5) . '.' . $file->getClientOriginalExtension();
     Storage::put($path.'/'.$file_name, File::get($file));
     return [
         'name' => $file_name,

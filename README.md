@@ -28,6 +28,14 @@ composer update
     ),
 </pre>
 
+#requires
+<pre>
+'providers' => array(
+        ...
+        Intervention\Image\ImageServiceProvider::class,
+    ),
+</pre>
+
 # Upload File
 <pre>
 $upload = (Mytuta::Uploadfile($request->file('file'),'yourfolder'));
